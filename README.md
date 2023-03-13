@@ -1,10 +1,21 @@
 # POO - Parcelles
 
+- [Utilisation](#utilisation)
 - [Sujet](#sujet)
   - [Parcelles](#parcelles)
   - [Activités de culture](#activités-de-culture)
     - [Activités de récolte](#activités-de-récolte)
     - [Activités de traitement anti-insectes](#activités-de-traitement-anti-insectes)
+
+---
+
+## Utilisation
+
+Pour __lancer le programme__, utiliser la commande suivante :
+
+```bash
+make run
+```
 
 ---
 
