@@ -1,10 +1,11 @@
 SRC = src
 BUILD = build
+BUILD_CLASS = $(BUILD)/class
 
 JC = javac
-JCFLAGS = -g -d $(BUILD) --source-path $(SRC)
+JCFLAGS = -d $(BUILD_CLASS) --source-path $(SRC)
 JVM = java
-JVMFALGS = -cp $(BUILD)
+JVMFALGS = -cp $(BUILD_CLASS)
 
 .SUFFIXES: .java .class
 
@@ -12,18 +13,23 @@ JVMFALGS = -cp $(BUILD)
 	@echo Compilation de $*...
 	@-$(JC) $(JCFLAGS) $*.java ||:
 
-CLASSES = \
-	Application
-
-SOURCES = $(addsuffix .java, $(addprefix $(SRC)/, $(CLASSES)))
-
-default: clean classes run
-
-classes: $(SOURCES:.java=.class)
-
 MAIN = Application
 
-run: classes
+SOURCES = $(BUILD)/sources.txt
+
+$(SOURCES):
+	@-mkdir -p $(BUILD)
+	@-find $(SRC) -name "*.java" > $@
+
+default: all
+
+all: clean compile run
+
+compile: $(SOURCES)
+	@echo Compilation...
+	@-$(JC) $(JCFLAGS) @$<
+
+run: compile
 	@echo Démarrage de $(MAIN)...
 	@-$(JVM) $(JVMFALGS) $(MAIN) ||:
 
