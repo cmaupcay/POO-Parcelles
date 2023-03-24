@@ -4,7 +4,7 @@ import periodes.Journee;
 
 public class Recolte extends Activite
 {
-    public static final String PREFIX = "Récolte de ";
+    private static final String PREFIX = "Récolte de ";
     public static final double EAU_PAR_HECTARE = 200.D;
 
     private final Journee periodeFavorable;

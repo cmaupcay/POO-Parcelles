@@ -12,9 +12,9 @@ public class Parcelle
     private final double superficie;
     private final Collection<Activite> activites;
 
-    public Parcelle(int numero, String section, double superficie)
+    public Parcelle(int numero, String section, double superficie) throws NumeroNegatif
     {
-        this.numero = numero;
+        this.setNumero(numero);
         this.section = section;
         this.superficie = superficie;
         this.activites = new LinkedList<>();
